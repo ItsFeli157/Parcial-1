@@ -1,0 +1,21 @@
+.tarjeta {
+    background-color: rgba(102, 122, 98, 0.427);
+    font-size: 25px; 
+    color: whitesmoke; 
+    border: 2px solid;
+    transition: transform 0.2s; 
+    border-radius: 2%; 
+    border-color: rgb(88, 88, 88); 
+    margin: 0.3cm; 
+    height: auto; 
+    display: flex;
+    width: auto; 
+    gap: 10px; 
+    flex-direction: column;
+}
+
+.tarjeta:hover {
+    transform: scale(1.05); 
+    background-color: rgba(131, 144, 116, 0.427); 
+    border-color: rgb(68, 65, 65); 
+}
