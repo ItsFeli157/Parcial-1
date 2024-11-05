@@ -1,0 +1,54 @@
+#root {
+  margin: 0 auto; 
+  text-align: center; 
+}
+
+
+.contenedorHeader {
+  display: flex; 
+  width: 100%; 
+  justify-content: space-between;
+}
+
+
+.contenedorTitulo {
+  justify-content: center;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.contenedorBoton {
+  display: flex;
+  align-items: center;
+  width: 100%; 
+}
+
+.contenedorTarjetas {
+  width: 100%; 
+  display: flex;
+  flex-direction: column; 
+  align-items:  center;
+}
+
+.modalInput {
+  width: 100%; 
+  padding: 15px; 
+  margin: 5px 0;
+  border-radius: 5px; 
+  border: 1px solid #000000;
+  font-size: 1em; 
+  box-sizing: border-box;
+  background-color: #9b9b9b; 
+  color: #000000; 
+}
+
+.modalInput::placeholder {
+  color: #49484897; 
+}
+
+@media (min-width: 768px) {
+  .contenedorTarjetas {
+    flex-direction: row; 
+    justify-content: space-around;
+  }
+}

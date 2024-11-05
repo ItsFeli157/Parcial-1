@@ -1,10 +1,9 @@
 import React from 'react';
-import Styles from './module.css'
+import Styles from './index.module.css'
 
-
-const boton = ({ children , onClickHandler }) => {
+const Boton = ({ children , onClickHandler }) => {
     return (
         <button onClick = {onClickHandler} className = {Styles.button}>{children}</button>
     )
 }
-export default boton
+export default Boton

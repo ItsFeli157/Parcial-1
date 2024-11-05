@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import Boton from '../../components/Button';
-import Tarjeta from '../../components/tarjeta';
+import Tarjeta from '../../components/Tarjeta';
 import Modal from '../../components/Modal';
+import SearchBar from '../../components/Search';
+import FilterByType from '../../components/Filter';
 import { getDishes, deleteDish, postDish } from '../../api/apiServices';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [dishes, setDishes] = useState([]);
+  const [filteredDishes, setFilteredDishes] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('');
   const [newDish, setNewDish] = useState({
     name: '',
@@ -25,7 +29,6 @@ const Home = () => {
     }));
   };
 
-  // Función para guardar un nuevo plato
   const handleSaveDish = async () => {
     await postDish(newDish);
     setIsModalOpen(false);
@@ -34,7 +37,6 @@ const Home = () => {
     setFilteredDishes(updatedDishes);
   };
 
-  // Función para borrar un plato
   const handleDeleteDish = async (id) => {
     await deleteDish(id);
     const updatedDishes = await getDishes();
@@ -42,25 +44,21 @@ const Home = () => {
     setFilteredDishes(updatedDishes);
   };
 
-  // Función para abrir el modal
   const openModal = () => {
     setNewDish({ name: '', description: '', type: '', preparation: '' });
     setIsModalOpen(true);
   };
 
-  // Función para buscar un plato con la barra de búsqueda
   const handleSearchChange = (term) => {
     setSearchTerm(term);
     filterDishes(term, selectedType);
   };
 
-  // Función para filtrar los platos por tipo
   const handleTypeChange = (type) => {
     setSelectedType(type);
     filterDishes(searchTerm, type);
   };
 
-  // Función para filtrar platos por búsqueda y tipo de comida
   const filterDishes = (searchTerm, type) => {
     let filtered = dishes;
 
@@ -77,7 +75,6 @@ const Home = () => {
     setFilteredDishes(filtered);
   };
 
-  // Obtener los platos desde el backend
   useEffect(() => {
     const getDishesPayload = async () => {
       const newDishes = await getDishes();
@@ -87,7 +84,6 @@ const Home = () => {
     getDishesPayload();
   }, []);
 
-  // Obtener la lista de platos disponibles
   const dishTypes = [...new Set(dishes.map((dish) => dish.type))];
 
   return (
@@ -98,7 +94,7 @@ const Home = () => {
 
       <div className={styles.contenedorHeader}>
         <FilterByType types={dishTypes} selectedType={selectedType} onTypeChange={handleTypeChange} />
-        <Boton onClickHandler={openModal}>Agregar receta</Boton>
+        <Boton onClickHandler={openModal}>Agregar una receta</Boton>
       </div>
 
       <div className={styles.contenedorSearch}>
@@ -117,14 +113,14 @@ const Home = () => {
             </div>
 
             <div className={styles.contenedorBoton}>
-              <Boton onClickHandler={() => handleDeleteDish(d.id)}>Eliminar</Boton>
+              <Boton onClickHandler={() => handleDeleteDish(d.id)}>Borrar</Boton>
             </div>
           </Tarjeta>
         ))}
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>Agregar una nueva receta</h2>
+        <h2>Agregar nueva receta</h2>
         <input
           type="text"
           name="name"

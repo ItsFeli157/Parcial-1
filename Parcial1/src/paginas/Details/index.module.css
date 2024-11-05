@@ -1,31 +1,34 @@
+
 #root {
-  margin: 0 auto;
-  text-align: center;
+  margin: 0 auto; 
+  text-align: center; 
 }
 
 .contenedorHeader {
-  display: flex;
-  width: 100%;
+  display: flex; 
+  width: 100%; 
   justify-content: flex-end;
 }
 
+
 .contenedorTitulo {
   justify-content: center;
-  font-weight: bold;
+  font-weight: bold; 
 }
 
 .contenedorBoton {
-  display: flex;
-  align-items: center;
+  display: flex; 
+  align-items: center; 
   width: 100%;
 }
 
 .contenedorTarjetas {
-  width: 100%;
-  display: flex;
+  width: 100%; 
+  display: flex; 
   flex-direction: column; 
   align-items: center; 
 }
+
 
 @media (min-width: 768px) {
   .contenedorTarjetas {

@@ -1,4 +1,4 @@
-//Get
+//Get dishes
 export const getDishes = async () => {
     try {
         const response = await fetch("http://localhost:3000/dishes");
@@ -14,7 +14,7 @@ export const getDishes = async () => {
     }
 }
 
-// Get by ID
+// Get dish by ID
 export const getDish = async (id) => {
     try {
         const response = await fetch("http://localhost:3000/dishes/"+id);
@@ -30,7 +30,7 @@ export const getDish = async (id) => {
     }
 }
 
-//Post
+//Post dish
 export const postDish = async (dish) => {
     try {
         const response = await fetch("http://localhost:3000/dishes", {
@@ -46,7 +46,7 @@ export const postDish = async (dish) => {
     }
 }
 
-//Put
+//Put dish
 export const putDish = async (dish) => {
     try {
         const response = await fetch(`http://localhost:3000/dishes/${dish.id}`, {
@@ -66,7 +66,7 @@ export const putDish = async (dish) => {
     }
 }
 
-//Delete
+//Delete dish
 export const deleteDish = async (dish) => {
     try {
         const response = await fetch(`http://localhost:3000/dishes/${dish}`, {

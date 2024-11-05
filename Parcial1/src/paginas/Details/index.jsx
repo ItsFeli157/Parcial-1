@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getDish } from '../../api/apiServices'
-import Styles from './module.css'
-import boton from '../../components/Button'
-import tarjeta from '../../components/Tarjeta';
+import Styles from './index.module.css'
+import Boton from '../../components/Button'
+import Tarjeta from '../../components/Tarjeta';
 import { Link, useParams } from 'react-router-dom';
 
-const details = () => {
+const Details = () => {
     const { id } = useParams();
     const [dishes, setDishes] = useState([])
 
@@ -19,19 +19,22 @@ const details = () => {
 
     return (
         <div>
-            <div className={Styles.contenedortarjetas}>
-                <tarjeta>
+            <div className={Styles.contenedorTarjetas}>
+
+                <Tarjeta>
                     <div className={Styles.contenedorTitulo}>{dishes.name}</div>
                     <div>
                         <p>{dishes.description}</p>
                         <p>Tipo: {dishes.type}</p>
                         <p>Preparacion: {dishes.preparation}</p>
                     </div>
-                </tarjeta>
+                </Tarjeta>
             </div>
-            <boton onClickHandler={() => { }}> <Link to={`/`}>Atras</Link> </boton>
+            <Boton onClickHandler={() => { }}>
+                <Link to={`/`}>Volver al inicio</Link>
+            </Boton>
         </div>
     )
 }
 
-export default details
+export default Details
